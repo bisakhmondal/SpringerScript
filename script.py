@@ -4,6 +4,7 @@ import requests as req
 
 # Reading the pdf
 # os.system('less Springer\ Ebooks.pdf >> pdfDecode.txt')
+##Decoding of pdf may vary system to system. So I have provided it.
 
 ## catching Source url
 file=open('pdfDecode.txt','r')
@@ -19,8 +20,7 @@ for i in urls:
     res=req.get(i)
     book=re.findall('/content/pdf/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',res.text)
     links.append('https://link.springer.com'+book[0])
-    if(cntr==5):
-        break
+
 ## saving the links
 with open('links.txt','w') as wio:
     wio.write('\n'.join(links))
